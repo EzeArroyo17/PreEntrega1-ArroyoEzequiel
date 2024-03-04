@@ -1,13 +1,16 @@
-header{
-    font:initial;
-    h1{
-        font-weight: 600;
-        font-weight: 600;
-        border-bottom: 2px solid black;
-    
-    }
-    h2{
-        font-weight: 600;
-
-    }
+header div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+header div ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+    padding-right: 100px;
+}
+header div ul li{
+    list-style-type: none;
 }

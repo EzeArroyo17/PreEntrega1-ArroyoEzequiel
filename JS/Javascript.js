@@ -1,54 +1,63 @@
-//PRE
 
+const habitaciones = [
+    { hab: 1, Habitacion: "Simple", Personas: "2", Precio: 10000 },
+    { hab: 2, Habitacion: "Simple plus", Personas: "3", Precio: 12000 },
+    { hab: 3, Habitacion: "Familiar", Personas: "4", Precio: 16000 },
+    { hab: 4, Habitacion: "Familiar Plus", Personas: "5", Precio: 18000 },
+    { hab: 5, Habitacion: "Suite Familiar", Personas: "6", Precio: 25000 },
+];
 
-let nombre = "Ezequiel Arroyo";
-let clave = 181222;
-let dinero = "$100.000";
-let dinero2 = 100000;
+console.log("Bienvenidos a nuestro sistema de reserva(Todo por log)");
+//CALCULAR ESTADIA
 
-alert("bienvenido "+ nombre)
-
-for( let i=1; i<=3; i++){
-    let inserteClave = prompt("Ingrese su clave por favor (181222)");
-    if(inserteClave==clave){
-        alert("Clave correcta");
-        let ingreso = prompt("Seleccione una opcion \n 1-Saldo \n 2-Retirar dinero ");
-        switch (ingreso){
-            case "1":
-                alert("Saldo " + dinero);
-                break;
-            case "2":
-                let retirar = prompt ("seleccionar monto \n 1-5.000 \n 2-10.000 \n 3-Seleccionar monto");
-                switch(retirar){
-                    case "1":
-                        alert("Saldo $95.000");
-                        break;
-                    case "2":
-                        alert("Saldo $90.000");
-                        break;
-                    case "3":
-                        let retiro = prompt ("ingrese monto a retirar");
-                        function restar(num1, num2){
-                            return num1 - num2;
-                        }
-                        let retiro2 = restar (dinero2, retiro);
-                        if(retiro >= 40000){
-                            alert("Excediste el monto diario permitido")
-                        }else{
-                            alert("Saldo $" + retiro2);
-                        }
-                        break;
-                    default:
-                        alert("La opcion ingresada es incorrecta")
-                }
-                break;
-            default:
-                alert("La opcion ingresada es incorrecta")
-        }
-        break;
+function calcularEstadia(ingreso, egreso) {
+    let fechaIngreso = new Date(ingreso).getTime()
+    let fechaEgreso = new Date(egreso).getTime()
+    if (fechaEgreso < fechaIngreso) {
+        return Error
     }
-    else{
-        alert("Clave incorrecta")}
-} 
+    const milisegundoPorDia = 86400000
+    let cantidadDias = (fechaEgreso - fechaIngreso) / milisegundoPorDia
+    return cantidadDias
+}
+
+let dias = calcularEstadia("2024/02/10", "2024/02/17")
+console.log("La cantidad de dias son: " + dias + " dias");
+
+//SELECCIONAR PARA CANTIDAD DE PERSONAS
+
+console.log("Seleciona la cantidad de personas a hospedarse");
+const buscarPorCantPersonas = function (arr, cantidad) {
+    return arr.find((el) => el.Personas.includes(cantidad))
+}
+let buscarPersonas = buscarPorCantPersonas(habitaciones, prompt("Inidca la cantidad de personas a hospedarse"))
+console.log("Estas son tus opciones de hospedaje");
+console.log(buscarPersonas);
 
 
+//RESERVACION DE OSPEDAJE
+
+console.log("Esta es la habitacion que reservaste");
+
+const reservarHabitacion = []
+function reservacion(arr, habitaciones) {
+    arr.push(habitaciones) 
+    return arr;
+}
+reservacion(reservarHabitacion, buscarPersonas);
+console.log(reservarHabitacion);
+
+//PRECIO FINAL DE LA HABITACION
+
+console.log("Lo que cuesta la habitacion es esto");
+
+function pagoReserva(habitaciones, recargo) {
+    return habitaciones.reduce((acc, el) => {
+        return acc = acc + el.Precio
+    }, recargo)
+}
+
+let impuestos = 5000;
+let cargosAdiocionales = 2500;
+let cargoFijo = (impuestos + cargosAdiocionales);
+console.log(pagoReserva(reservarHabitacion, cargoFijo));
