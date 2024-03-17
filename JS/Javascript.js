@@ -1,4 +1,4 @@
-
+/*
 const habitaciones = [
     { hab: 1, Habitacion: "Simple", Personas: "2", Precio: 10000 },
     { hab: 2, Habitacion: "Simple plus", Personas: "3", Precio: 12000 },
@@ -61,3 +61,4 @@ let impuestos = 5000;
 let cargosAdiocionales = 2500;
 let cargoFijo = (impuestos + cargosAdiocionales);
 console.log(pagoReserva(reservarHabitacion, cargoFijo));
+*/

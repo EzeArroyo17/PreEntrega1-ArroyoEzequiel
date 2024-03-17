@@ -1,0 +1,83 @@
+.inicio {
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2 {}
+
+        p {
+            width: 80%;
+        }
+    }
+
+    .contenedorQuienesSomos {
+        
+        .Lobby {
+            width: 70%;
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+            grid-template-areas:
+                "imagen texto";
+
+            img {
+                grid-area: imagen;
+            }
+
+            div {
+                grid-area: texto;
+
+                h2 {}
+
+                p {}
+            }
+        }
+
+        .Spa {
+            width: 70%;
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+            grid-template-areas:
+                "imagen texto";
+
+            img {
+                grid-area: texto;
+            }
+
+            div {
+                grid-area: imagen;
+
+                h2 {}
+
+                p {}
+            }
+        }
+
+        .Habitaciones {
+            width: 70%;
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+            grid-template-areas:
+                "imagen texto";
+
+            img {
+                grid-area: imagen;
+            }
+
+            div {
+                grid-area: texto;
+
+                h2 {}
+
+                p {}
+            }
+        }
+    }
+}
