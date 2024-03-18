@@ -202,8 +202,17 @@ header div div ul li a {
   width: 100%;
 }
 
+h2 {
+  text-align: center;
+}
+
 .formularioReserva {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
 }
 
 /*# sourceMappingURL=main.css.map */

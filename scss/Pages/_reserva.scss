@@ -67,6 +67,15 @@
 
 }
 
-.formularioReserva {
+h2{
     text-align: center;
 }
+.formularioReserva{
+    text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 30%;
+}
+    
