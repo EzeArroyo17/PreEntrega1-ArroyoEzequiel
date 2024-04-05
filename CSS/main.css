@@ -97,6 +97,21 @@ header div div ul li a {
   color: black;
 }
 
+header #inicio {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+header div {
+  background-color: #AEE2FB;
+}
+
+.inicio {
+  padding-top: 40px;
+}
 .inicio div {
   display: flex;
   flex-direction: column;
@@ -107,6 +122,7 @@ header div div ul li a {
   width: 80%;
 }
 .inicio .contenedorQuienesSomos .Lobby {
+  padding-top: 40px;
   width: 70%;
   text-align: center;
   display: grid;
@@ -116,11 +132,13 @@ header div div ul li a {
 }
 .inicio .contenedorQuienesSomos .Lobby img {
   grid-area: imagen;
+  width: 80%;
 }
 .inicio .contenedorQuienesSomos .Lobby div {
   grid-area: texto;
 }
 .inicio .contenedorQuienesSomos .Spa {
+  padding-top: 40px;
   width: 70%;
   text-align: center;
   display: grid;
@@ -130,11 +148,14 @@ header div div ul li a {
 }
 .inicio .contenedorQuienesSomos .Spa img {
   grid-area: texto;
+  width: 80%;
 }
 .inicio .contenedorQuienesSomos .Spa div {
   grid-area: imagen;
 }
 .inicio .contenedorQuienesSomos .Habitaciones {
+  padding-top: 40px;
+  padding-bottom: 100px;
   width: 70%;
   text-align: center;
   display: grid;
@@ -144,6 +165,7 @@ header div div ul li a {
 }
 .inicio .contenedorQuienesSomos .Habitaciones img {
   grid-area: imagen;
+  width: 80%;
 }
 .inicio .contenedorQuienesSomos .Habitaciones div {
   grid-area: texto;
@@ -157,49 +179,40 @@ header div div ul li a {
 .reservacion p {
   text-align: center;
 }
-.reservacion .calendario {
+
+.cardReserva div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.reservacion .calendario .calendarioDiciembre {
-  width: 20%;
-}
-.reservacion .calendario .calendarioDiciembre ol {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  padding: 5px;
-}
-.reservacion .calendario .calendarioDiciembre ol ol {
-  font-size: small;
-}
-.reservacion .calendario .calendarioDiciembre ol li {
-  list-style: none;
+.cardReserva div .cardHabitacion {
   display: flex;
-  justify-content: center;
-  text-align: center;
-  font-size: small;
-}
-.reservacion .calendario .calendarioDiciembre ol .primerDia {
-  grid-column-start: 7;
-}
-.reservacion .cardReserva div {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: auto;
-}
-.reservacion .cardReserva div .cardHabitacion {
+  flex-direction: column;
+  align-items: center;
   border: 2px solid black;
   padding: 5px;
   border-radius: 5px;
-  margin: 15px;
   width: 15%;
-  text-align: center;
+  margin: 15px;
   font-size: small;
 }
-.reservacion .cardReserva div .cardHabitacion .imagenHabitacion {
+.cardReserva div .cardHabitacion .cardTexto {
+  display: flex;
+  flex-direction: column;
+}
+.cardReserva div .cardHabitacion .imagenHabitacion {
   width: 100%;
+}
+.cardReserva div .cardHabitacion #agregar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  font-weight: 700;
+  font-size: medium;
+  font-family: "Open Sans", sans-serif;
+  background-color: #8BD9E8;
+  cursor: pointer;
 }
 
 h2 {
@@ -212,7 +225,12 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%;
+}
+.formularioReserva div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=main.css.map */

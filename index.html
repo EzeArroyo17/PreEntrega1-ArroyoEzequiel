@@ -29,7 +29,6 @@
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#quienesSomos">Quienes Somos</a></li>
                     <li><a href="#reservaHotel">Reserva Hotel</a></li>
-                    <li><a href="#reservaComodidades">Reserva Comodidades</a></li>
                 </ul>
             </div>
         </div>
@@ -55,7 +54,7 @@
             <div class="contenedorQuienesSomos">
 
                 <div class="Lobby">
-                    <img src="" class="cardLobby">
+                    <img src="./Imagenes/lobby1.jpg" class="cardLobby">
                     <div class="texto-primero">
                         <h2>Algunas de las comodidades que te podemos ofrecer</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, enim assumenda ab non
@@ -71,7 +70,7 @@
                 </div>
 
                 <div class="Spa">
-                    <img src="" alt="" class="cardSpa">
+                    <img src="./Imagenes/imagenes.spa.avif" alt="" class="cardSpa">
                     <div class="texto-segundo">
                         <h2>Contamos con un completo spa donde podras relajarte</h2>
                         <P>
@@ -86,9 +85,9 @@
                 </div>
 
                 <div class="Habitaciones">
-                    <img src="" alt="" class="cardHabitaciones">
+                    <img src="./Imagenes/imagen.glaciar.jpg" alt="" class="cardHabitaciones">
                     <div class="texto-ultimo">
-                        <h2>Mira nuestras habitaciones</h2>
+                        <h2>Aparte podras conocer el imponente glaciar Perito Moreno</h2>
                         <P>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis eaque non temporibus.
                             Voluptatibus, quo dolor.
                             Voluptates id iure perspiciatis cumque, dicta quis aspernatur hic incidunt recusandae neque
@@ -108,113 +107,53 @@
             <h2>Realiza tu reserva desde nuestra pagina</h2>
             <p>Selecciona la fecha que desear venir a
                 conocer una de las maravillas patagonicas argentinas</p>
-            <div class="calendario">
-                <div class="calendarioDiciembre">
-                    <ol>
-                        <ol>LUNES</ol>
-                        <ol>MARTES</ol>
-                        <ol>MIERCOLES</ol>
-                        <ol>JUEVES</ol>
-                        <ol>VIERNES</ol>
-                        <ol>SABADO</ol>
-                        <ol>DOMINGO</ol>
-                        <li class="primerDia">1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li>10</li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>28</li>
-                        <li>29</li>
-                        <li>30</li>
-                        <li>31</li>
-                    </ol>
-                </div>
             </div>
             </div>
+
             <section class="cardReserva">
                 <div>
-                    <div id="habitacionesReserva"></div>
+                    <div id="habitacionesReserva">
                 </div>
+            </div>
             </section>
+
             </div>
         </section>
-
-
-
-
-        <h2>Formulario de reserva</h2>
+        
         <section class="formularioReserva">
+            <h2>Formulario de reserva</h2>
 
+            <div>
+                <h3>Selecciona tu fecha de destino</h3>
 
-            <label for="buscar">Busca tu habitacion</label>
-            <input type="text" name="buscar" id="buscar" />
-            <button id="btnSearch" class="btn">Buscar</button>
-
-
-            <select name="dias" id="selectDias">
-                <option id="btnOpcion" value="dafault">Selecciona cantidad de dias</option>
-            </select>
-
-            <option value="">Precio</option>
-            <input type="text" name="" id="inputCompra">
-
+                <label for="fechaIngreso">Fecha Ingreso</label>
+                <input type="date" name="fechaIngreso" id="inputIngreso" min="" max="">
+                <label for="fechaEgreso">Fecha Egreso</label>
+                <input type="date" name="fechaEgreso" id="inputEgreso" min="" max=""> 
+            </div>
 
             <option value="">Agregue informacion adicional</option>
             <textarea name="" id="" cols="30" rows="10"></textarea>
-            <input type="submit" value="Enviar">
 
-
-
+            <input
+            type="button"
+            class="btn btn-success"
+            value="Enviar"
+            id="calcular" />
 
         </section>
     </main>
 
 
-
-
-
-    <aside>
-        <section>
-            <p id="reservaComodidades">
-                Desde aqui podes reservar y pagar las excursiones que desees sin ningun tipo de recargo
-            </p>
-        </section>
-        <section>
-            <p>
-                Ademas reserva un vehiculo que se adaprte a tus comodidades
-                <span>QUE TE A TU LLEGADA TE ESPERA EN EL AEROPUERTO!!</span>
-            </p>
-        </section>
-    </aside>
-    <section>
         <H2>
             ALUMNO: Arroyo Ezequiel
         </H2>
     </section>
-
-    <script src="./JS/Javascript.js"></script>
+    <!--CDN SWAN-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--CDN LUXOR-->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <!--LINKS JS-->
     <script src="./JS/reserva.js"></script>
 </body>
 

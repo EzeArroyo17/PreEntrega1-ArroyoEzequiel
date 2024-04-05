@@ -1,151 +1,212 @@
-const habitaciones = [
-    { hab: 1, img: "habitacion-simple.jpg", Habitacion: "simple", Personas: "2", Precio: 10000 },
-    { hab: 2, img: "habitacion-familiar.jpg", Habitacion: "familiar", Personas: "4", Precio: 16000 },
-    { hab: 3, img: "habitacion-suite-familiar.jpg", Habitacion: "suite familiar", Personas: "6", Precio: 25000 },
-    { hab: 4, img: "habitacion-suite.jpg", Habitacion: "suite especial", Personas: "2", Precio: 25000 },
-];
+let habitaciones = [];
 
-const dias = [1,2,3,4,5,6,7,8]
+const API_URL = "./DB/db.json";
 
+const getData = async (url) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    habitaciones = data; // Actualizar el valor de la variable habitaciones
+    crearTarjeta(habitaciones);
+};
 
-const inputs = document.querySelectorAll("input");
-const inputSearch = inputs[0];
-const inputCompra = inputs[0]
-const selectDias = document.querySelector("#selectDias");
+getData(API_URL);
+
+const inputsDate = document.querySelectorAll('input[type="date"]');
+const btnCalcular = document.querySelector("#calcular");
 
 const habitacionesReserva = document.getElementById("habitacionesReserva");
-const btnSearch = document.getElementById("btnSearch");
-const btnCompra = document.getElementById("btnCompra")
 
-const reservarHabitacion = [];
+const DateTime = luxon.DateTime;
 
-
-
-for (const habitacion of habitaciones) {
-    const cardHabitacion =
-        `<div class="cardHabitacion">
-                    <img src="../imagenes/${habitacion.img}" alt="" class="imagenHabitacion">
-                    <h2>Habitacion: ${habitacion.Habitacion}</h2>
-                <div>
+function crearTarjeta() {
+    for (const habitacion of habitaciones) {
+        const cardHabitacion =
+            `
+            <div class="cardHabitacion">
+                <img src="../imagenes/${habitacion.img}" alt="" class="imagenHabitacion">
+                <h2>Habitacion: ${habitacion.Habitacion}</h2>
+                <div class="cardTexto">
                     <h2>Cant.Personas: ${habitacion.Personas}</h2>
                     <h2>Precio: $${habitacion.Precio}</h2>
                 </div>
-        </div>`;
-    habitacionesReserva.innerHTML += cardHabitacion
-}
-
-
-function cantidadDias (){
-    for (const nums of dias) {
-        const option = document.createElement("option");
-        option.value = nums;
-        option.innerText = nums;
-        selectDias.append(option);
-    }}
-    cantidadDias()
-
-function buscarPorEnter () {
-    inputSearch.addEventListener("keyup", (e) => {
-        if (e.key == "Enter") {
-        const encontrado = buscarHabitacion(habitaciones, inputSearch.value);
-        return encontrado
-        }
-    });   
-}
-
-function buscarPorBoton (){
-    btnSearch.addEventListener("click", (e) => {
-        const encontrado1 = buscarHabitacion(habitaciones, inputSearch.value);
-        return encontrado1
-        });
-}
-
-
-buscarPorEnter()
-buscarPorBoton()
-
-function buscarHabitacion(arr, filtro) {
-    const encontrado = arr.find((el) => {
-    return el.Habitacion.includes(filtro);
-    });
-    return encontrado;
-}
-
-const recuperoUsuario = JSON.parse(localStorage.getItem("obj"));
-console.log(recuperoUsuario);
-
-localStorage.setItem(buscarPorEnter());
-
-
-
-
-
-/*
-function calcularPrecio (dias,habitacion){
-return dias.reduce((acc, el)=>{
-    return acc = acc + el.Precio 
-},habitacion) 
-}
-
-
-console.log(calcularPrecio(cantidadDias,buscarPorBoton));
-//console.log(habitaciones,precio);
-//console.log(calcularPrecio(calcularDias(),habi));
-
-
-
-
-
-
-
-
-
-
-
-
-//CALCULAR ESTADIA
-
-/*
-
-function calcularEstadia(ingreso,egreso) {
-    let fechaIngreso =  inputIngreso
-    let fechaEgreso = inputEgreso
-    if (fechaEgreso < fechaIngreso) {
-        return Error
+                <input type="button" value="Agregar" id="agregar">
+            </div>
+        `;
+        habitacionesReserva.innerHTML += cardHabitacion;
     }
-    const milisegundoPorDia = 864000
-    let cantidadDias = (fechaEgreso - fechaIngreso)/milisegundoPorDia
-    return cantidadDias
 }
 
-fechaIngreso =inputIngreso.value
-fechaEgreso = inputEgreso.value;
-const fecha = calcularEstadia(fechaIngreso,fechaEgreso);
-console.log(fecha);
 
-/*let fechaIngreso = inputIngreso.addEventListener("click", (e) => {
-    const fecha =   new Date==inputIngreso.value;
-    console.log(fecha);
+//RESERVA HABITACION
+const btnAgregar = document.querySelectorAll('input[type="button"]');
+const btnAgregar0 = btnAgregar[0]
+const btnAgregar1 = btnAgregar[1]
+const btnAgregar2 = btnAgregar[2]
+const btnAgregar3 = btnAgregar[3]
+function obtenerPrecio(habitacion) {
+    return habitaciones[habitacion].Precio
+}
+
+function precioHabitacion() {
+    const costoHabitacion = 0;
+    const precio = obtenerPrecio(costoHabitacion)
+    return precio;
+}
+
+function precioHabitacion1() {
+    const costoHabitacion = 1;
+    const precio = obtenerPrecio(costoHabitacion)
+    return precio;
+}
+
+function precioHabitacion2() {
+    const costoHabitacion = 2;
+    const precio = obtenerPrecio(costoHabitacion)
+    return precio;
+}
+
+function precioHabitacion3() {
+    const costoHabitacion = 3;
+    const precio = obtenerPrecio(costoHabitacion)
+    return precio;
+}
+
+
+//RESERVA FECHA
+
+const fIngreso = DateTime.now().toFormat("yyyy-MM-dd")
+const fEgreso = DateTime.now().plus({ months: 1 }).toFormat("yyyy-MM-dd");
+
+function calcularDias(ingreso, egreso) {
+    let total = egreso.diff(ingreso);
+    return total.as("days");
+}
+
+
+inputsDate.forEach((date) => {
+    date.setAttribute("min", fIngreso);
+    date.setAttribute("max", fEgreso);
+});
+
+
+
+btnAgregar0.addEventListener("click", () => {
+    const precioPorHabitacion = precioHabitacion(btnAgregar0)
+    btnCalcular.addEventListener("click", () => {
+        const checkIn = DateTime.fromISO(inputsDate[0].value);
+        const checkOut = DateTime.fromISO(inputsDate[1].value);
+        const estadia = calcularDias(checkIn, checkOut);
+        const precioTotal = estadia * precioPorHabitacion;
+        if (checkOut > checkIn) {
+            Swal.fire({
+                title: "Resultado",
+                text: `Tu estadía de ${estadia} días tiene un precio total de $${precioTotal}`,
+                icon: "info",
+                iconColor: "#00ff00",
+                showCancelButton: true,
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar",
+                position: "top-center",
+                backdrop: "#445566aa",
+                footer: "Se te enviara un mail para continuar con el pago"
+            });
+        }
+        else {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La fecha solicitada es inexistente",
+            });
+        }
     })
-console.log(fechaIngreso);
-let fechaEgreso = new Date (inputEgreso)
-console.log(fechaEgreso);
-
-//console.log(calcularEstadia(fechaIngreso,fechaEgreso));
-
-btnOk.addEventListener("click", (e) => {
-    const fecha = calcularEstadia(btnOk.value);
-    console.log(fecha);
-    });
+});
 
 
+btnAgregar1.addEventListener("click", () => {
+    const precioPorHabitacion = precioHabitacion1(btnAgregar)
+
+    btnCalcular.addEventListener("click", () => {
+        const checkIn = DateTime.fromISO(inputsDate[0].value);
+        const checkOut = DateTime.fromISO(inputsDate[1].value);
+        const estadia = calcularDias(checkIn, checkOut);
+        const precioTotal = estadia * precioPorHabitacion;
+        if (checkOut > checkIn) {
+            Swal.fire({
+                title: "Resultado",
+                text: `Tu estadía de ${estadia} días tiene un precio total de $${precioTotal}`,
+                icon: "info",
+                iconColor: "#00ff00",
+                showCancelButton: true,
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar",
+                position: "top-center",
+                backdrop: "#445566aa",
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La fecha solicitada es inexistente",
+            });
+        }
+    })
+});
 
 
-/*
-inputIngreso.addEventListener("click", (e) => {
-    const fechaIngreso1 = calcularEstadia (fechaIngreso,inputIngreso.value);
-    console.log(fechaIngreso1);
-    });*/
+btnAgregar2.addEventListener("click", () => {
+    const precioPorHabitacion = precioHabitacion2(btnAgregar2)
+    btnCalcular.addEventListener("click", () => {
+        const checkIn = DateTime.fromISO(inputsDate[0].value);
+        const checkOut = DateTime.fromISO(inputsDate[1].value);
+        const estadia = calcularDias(checkIn, checkOut);
+        const precioTotal = estadia * precioPorHabitacion;
+        if (checkOut > checkIn) {
+            Swal.fire({
+                title: "Resultado",
+                text: `Tu estadía de ${estadia} días tiene un precio total de $${precioTotal}`,
+                icon: "info",
+                iconColor: "#00ff00",
+                showCancelButton: true,
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar",
+                position: "top-center",
+                backdrop: "#445566aa",
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La fecha solicitada es inexistente",
+            });
+        }
+    })
+});
 
-
-    
+btnAgregar3.addEventListener("click", () => {
+    const precioPorHabitacion = precioHabitacion3(btnAgregar3)
+    btnCalcular.addEventListener("click", () => {
+        const checkIn = DateTime.fromISO(inputsDate[0].value);
+        const checkOut = DateTime.fromISO(inputsDate[1].value);
+        const estadia = calcularDias(checkIn, checkOut);
+        const precioTotal = estadia * precioPorHabitacion;
+        if (checkOut > checkIn) {
+            Swal.fire({
+                title: "Resultado",
+                text: `Tu estadía de ${estadia} días tiene un precio total de $${precioTotal}`,
+                icon: "info",
+                iconColor: "#00ff00",
+                showCancelButton: true,
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar",
+                position: "top-center",
+                backdrop: "#445566aa",
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La fecha solicitada es inexistente",
+            });
+        }
+    })
+});
